@@ -1,6 +1,6 @@
 # 検証結果
 
-検証日：2026-10-04 UTC。公開前のローカルHTTP配信で実施。
+検証日：2026-10-04 UTC。ローカルHTTP配信と公開GitHub Pagesの両方で実施。
 
 ## 合格
 
@@ -20,10 +20,13 @@
 - スクリーンショットでデスクトップ・モバイルの表示と主操作ボタンの配色を視覚確認。
 - 印刷CSSでシートだけを表示。EdgeでA4 PDF（試験構成は3ページ）を出力し、Popplerで全3ページを画像化して目視確認。表・日本語・技能・ページ割りに欠けや重なりなし。
 - 公開データのトップレベルは許可リストで抽出。シナリオ・敵・マップ・実PC・公式本文/画像・旧任意4武器を含まない。公開データ内のシナリオ固有名も検索確認。
+- 新規公開リポジトリ `sheepdog0820/ignis-character-builder` を作成し、`main` のルートをPages配信元に設定。既存repoは変更していない。既存Git Credential Manager認証を使用し、新しい資格情報・OAuth権限拡張は行っていない。
+- 公開URL `https://sheepdog0820.github.io/ignis-character-builder/` で同じ33項目のブラウザ検証が合格。公開後も実行エラー0、入力の外部通信0。実施項目は `tests/public-browser-results.json`。
+- Pagesビルド状態 `built`、実装commit `2c4750a1c6deb3e6e7c52b98277f002b96ed7741` の配備を確認。最終公開commitはGit履歴とリリース報告で確認できる。
+- HTML、CSS、JavaScript、公開ルール、抽出元記録の配信をHTTP200で確認し、コミット内のファイルとのSHA-256を照合。Windows作業ファイルのCRLFはGitでLFへ正規化される。
 
 ## 未実施・制限
 
-- GitHubリポジトリ作成、push、Pages設定、公開URL、デプロイ完了、公開commitの検証は未実施。既存GitHub接続のユーザーは確認できたものの、CLIは未ログイン、Git Credential Managerにも非対話で使える資格情報がなく、提供GitHubツールに新規repo作成・Pages設定機能がないため。
 - Chrome・Firefox・Safari、実機スマートフォン、物理プリンター、スクリーンリーダーによる操作は未実施。モバイルはEdgeの画面幅とタッチ設定による検証。
 - 実卓の戦闘裁定とバランス、位置・射線・同意・技能条件の実効判定・予約の消費は自動化しない。公式完全互換を保証しない。
 - Lv4以後の作成・成長UI、旧任意武器v0.1は範囲外。
