@@ -1,0 +1,11 @@
+{
+  "rulesVersion": "2.4",
+  "sourceDate": "2026-10-04",
+  "sourceSha256": {
+    "rules_v2.4.json": "d0aeba4fd1bfe5ebd47c2857aa1f78aa50f52d463ee1aac1f3d2b1bfd5c5675f",
+    "rules_engine.py": "5886effb8b87fa20133b4e0bfb60d01684e4817a7f332fdf59ad8ebb0ce1e016",
+    "equipment_v2.4.json": "179cc020e3bb6b027b8edadee5acf416e4ddfa9c9c5d4efc98728e12901d4ac1",
+    "イグニス_主副30通り_Lv3選択ガイド_v2.4.docx": "23fa8cc84c5efbf670094a4b974cd31b1c79d617a7bcaaefc4df7baa87c53f29"
+  },
+  "extraction": "Lv3に必要な独自クラス・技能・武器・機体と30取得例のみ。シナリオ、敵、マップ、実PC、画像は収録しない。"
+}

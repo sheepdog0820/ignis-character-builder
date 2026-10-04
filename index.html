@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="イグニス独自クラス試遊ルールv2.4のLv3キャラクター作成。主副30通り、技能と武器の選択、計算と印刷を端末だけで。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>IGNIS | Lv3 キャラクター作成</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">作成画面へ</a>
+<header class="masthead"><div class="shell brand-row"><a class="brand" href="#step-1"><span class="brand-mark" aria-hidden="true">I</span>IGNIS<span class="edition">CHARACTER BUILDER</span></a><span class="version">試遊 v2.4 · Lv3</span></div></header>
+<div class="shell hero no-print"><p class="eyebrow">YOUR PILOT. YOUR CHOICE.</p><h1>あなたのイグニスを<br>組み上げよう。</h1><p class="intro">主で役割を決め、副で可能性を広げる。<br>6つの独自クラスから、最初の1機へ。</p><div class="hero-meta"><span>主2 / 副1</span><span>30のおすすめ構成</span><span>入力はこの端末だけ</span></div><div class="orbit" aria-hidden="true"><div class="orbit-inner">EX–02<br><b>IGNIS</b><small>CORE / ONLINE</small></div></div></div>
+<div class="shell workspace">
+  <nav class="steps no-print" aria-label="作成の手順"><button data-step="1"><span>01</span>名前とクラス</button><button data-step="2"><span>02</span>技能と武器</button><button data-step="3"><span>03</span>シートを確認</button></nav>
+  <div id="message" class="notice no-print" role="status" aria-live="polite" hidden></div>
+  <main id="main" tabindex="-1"><div id="loading" role="status">正式な試遊データを読み込んでいます…</div></main>
+  <div class="toolbar no-print" aria-label="保存と読込"><button id="save-local" type="button">この端末に保存</button><button id="restore-local" type="button">端末保存を復元</button><button id="export" type="button">JSONを保存</button><label class="button" for="import">JSONを読み込む</label><input id="import" class="file-input" type="file" accept=".json,application/json"><button id="print" type="button">印刷 / PDF</button><p id="save-status" role="status">保存先：ブラウザのローカル保存領域</p></div>
+  <section class="privacy no-print"><h2>安心して作成するために</h2><p>PC名とメモ、選択した構成は端末内で扱います。このアプリは入力内容をサーバーに保存せず、分析トラッキングや外部APIも使用しません。共有端末での保存にはご注意ください。GitHub Pagesはサイトへのアクセス時に、セキュリティ目的でIPアドレスを記録します。</p><p>メタリックガーディアン向けの非公式ファン用・独自試遊データです。公式クラス・公式キャラクター作成規則ではありません。公式書籍の本文・画像は収録していません。実卓のバランスや公式完全互換は未保証です。</p><a href="README.md">使い方と検証範囲</a></section>
+</div>
+<footer class="shell footer">IGNIS / INDEPENDENT PLAYTEST RULES <span>v2.4 · 2026.10.04</span></footer>
+</body></html>

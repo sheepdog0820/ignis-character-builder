@@ -1,0 +1,1988 @@
+{
+  "version": "2.4",
+  "released": "2026-10-04",
+  "level": 3,
+  "mainRank": 2,
+  "subRank": 1,
+  "frame": {
+    "name": "EX-02 イグニス共通フレーム",
+    "size": "M",
+    "modifiers": {
+      "命中": 1,
+      "防壁": 1,
+      "行動": -2,
+      "攻撃力": 5,
+      "FP": 12,
+      "EN": 10
+    },
+    "armor": {
+      "斬": 6,
+      "刺": 4,
+      "殴": 6,
+      "炎": 4,
+      "氷": 4,
+      "雷": 4,
+      "光": 2,
+      "闇": 2
+    }
+  },
+  "classes": {
+    "blade": {
+      "name": "ブレードアサルト",
+      "attribute": "反射",
+      "focus": "命中",
+      "sub_focus": "命中",
+      "profile": {
+        "命中": 2,
+        "回避": 1,
+        "行動": 1,
+        "攻撃力": 1,
+        "FP": 4
+      },
+      "weapon": "blade",
+      "option": null,
+      "skills": [
+        "b1",
+        "b2",
+        "b3",
+        "xb1"
+      ],
+      "ultimate": "ub",
+      "fiction": "腕をブレードに限定再構成する近接突破役。"
+    },
+    "gunner": {
+      "name": "ガンナーアサルト",
+      "attribute": "知覚",
+      "focus": "砲撃",
+      "sub_focus": "砲撃",
+      "profile": {
+        "砲撃": 2,
+        "攻撃力": 1,
+        "EN": 2
+      },
+      "weapon": "lancer",
+      "option": null,
+      "skills": [
+        "g1",
+        "g2",
+        "g3",
+        "xg1"
+      ],
+      "ultimate": "ug",
+      "fiction": "腕を収束砲に限定再構成する遠距離火力役。"
+    },
+    "bastion": {
+      "name": "バスティオン",
+      "attribute": "体力",
+      "focus": "防壁",
+      "sub_focus": "防壁",
+      "profile": {
+        "防壁": 2,
+        "FP": 8
+      },
+      "weapon": "frame",
+      "option": "shield",
+      "skills": [
+        "s1",
+        "s2",
+        "s3",
+        "xs1",
+        "xs2"
+      ],
+      "ultimate": "us",
+      "fiction": "装甲を盾へ展開し、近くの味方を守る。"
+    },
+    "link": {
+      "name": "リンクサポーター",
+      "attribute": "理知",
+      "focus": "防壁",
+      "sub_focus": "EN",
+      "profile": {
+        "行動": 1,
+        "FP": 2,
+        "EN": 4
+      },
+      "weapon": "frame",
+      "option": "relay",
+      "skills": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "ultimate": "ul",
+      "fiction": "相手の意思を保った同期で照準と立て直しを支える。"
+    },
+    "field": {
+      "name": "フィールドコントローラー",
+      "attribute": "理知",
+      "focus": "命中",
+      "sub_focus": "命中",
+      "profile": {
+        "命中": 2,
+        "行動": 2,
+        "EN": 4
+      },
+      "weapon": "frame",
+      "option": "anchor",
+      "skills": [
+        "f1",
+        "f2",
+        "f3",
+        "xf1"
+      ],
+      "ultimate": "uf",
+      "fiction": "アンカーと制御ケーブルで敵の経路・照準を乱す。"
+    },
+    "vector": {
+      "name": "ヴェクター",
+      "attribute": "反射",
+      "focus": "回避",
+      "sub_focus": "移動",
+      "profile": {
+        "回避": 2,
+        "行動": 2,
+        "移動": 1
+      },
+      "weapon": "frame",
+      "option": "fins",
+      "skills": [
+        "v1",
+        "v2",
+        "v3",
+        "xv1",
+        "xv2"
+      ],
+      "ultimate": "uv",
+      "fiction": "関節とフィンを再構成し、進路と救出を作る。"
+    }
+  },
+  "skills": {
+    "b1": {
+      "id": "b1",
+      "name": "踏込斬り",
+      "class": "blade",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "メジャー",
+      "check": "命中対回避",
+      "target": "敵または物体1体",
+      "range": "白兵武器の射程",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": true,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "damage_boost",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "このメインで通常移動1マス以上した場合、白兵攻撃の固定ダメージ+3。移動していなければ使用不可。",
+      "parameters": {
+        "damage": 3,
+        "requires_moved": true
+      },
+      "role": "移動して斬る火力役"
+    },
+    "b2": {
+      "id": "b2",
+      "name": "刃受け",
+      "class": "blade",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "自身へのダメージ適用直前",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "reduction",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "装甲適用後のダメージを4+熟練度//2点軽減。0未満にしない。",
+      "parameters": {
+        "reduce_base": 4,
+        "rank_divisor": 2
+      },
+      "role": "自分の被害を軽減"
+    },
+    "b3": {
+      "id": "b3",
+      "name": "位相断ち",
+      "class": "blade",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "命中対回避",
+      "target": "敵または物体1体",
+      "range": "共鳴ブレードの射程",
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": true,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "b3",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "共鳴ブレードで攻撃。斬防御を3点だけ無視し、0未満にしない。",
+      "parameters": {
+        "ignore_armor": 3,
+        "weapon": "blade"
+      },
+      "role": "斬装甲を3点無視"
+    },
+    "g1": {
+      "id": "g1",
+      "name": "収束照準",
+      "class": "gunner",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次の指定攻撃1回、メイン終了まで",
+      "stacking_group": "attack_bonus",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "装備中の射撃か砲撃武器1つを指定。射撃なら命中、砲撃なら砲撃判定+2。ランサーには砲撃値を使う。",
+      "parameters": {
+        "attack_bonus": 2
+      },
+      "role": "射撃・砲撃を当てやすく"
+    },
+    "g2": {
+      "id": "g2",
+      "name": "出力投射",
+      "class": "gunner",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "メジャー",
+      "check": "射撃:命中対回避／砲撃:砲撃対防壁",
+      "target": "敵または物体1体",
+      "range": "射撃/砲撃武器の射程",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": true,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "damage_boost",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "装備射撃または砲撃武器で攻撃一回、固定ダメージ+3。移動後砲撃を許可しない。",
+      "parameters": {
+        "damage": 3
+      },
+      "role": "射撃・砲撃の火力を上げる"
+    },
+    "g3": {
+      "id": "g3",
+      "name": "砲撃姿勢",
+      "class": "gunner",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次の砲撃1回、メイン終了まで",
+      "stacking_group": "attack_bonus",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "共鳴ランサーの砲撃判定+3。収束照準やリンクとの攻撃補助は最高値一つだけ。",
+      "parameters": {
+        "attack_bonus": 3,
+        "weapon": "lancer"
+      },
+      "role": "主砲をさらに当てやすく"
+    },
+    "s1": {
+      "id": "s1",
+      "name": "庇護展開",
+      "class": "bastion",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "味方へのダメージ適用直前",
+      "check": "なし",
+      "target": "味方1体",
+      "range": "0～1",
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "reduction",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "自分も対象の範囲攻撃では不可。対象の未軽減ダメージを引き受け、自分の属性防御を一回適用、さらに2+熟練度//2軽減。行動終了にはしない。肩代わり済み再移転不可。",
+      "parameters": {
+        "cover": true,
+        "cover_range": 1,
+        "reduce_base": 2,
+        "rank_divisor": 2,
+        "no_transfer_chain": true
+      },
+      "role": "近くの味方を庇う"
+    },
+    "s2": {
+      "id": "s2",
+      "name": "装甲集中",
+      "class": "bastion",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次の被ダメージ1回、ラウンド終了まで",
+      "stacking_group": "reduction",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "装甲適用後の被ダメージを6点軽減する防御を予約。庇護展開等の通常軽減とは最高値一つ。",
+      "parameters": {
+        "reduction_reserve": 6
+      },
+      "role": "自分への軽減を予約"
+    },
+    "s3": {
+      "id": "s3",
+      "name": "迎撃装甲",
+      "class": "bastion",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "自身へのダメージ適用直前",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "reduction",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "装甲適用後のダメージを6+熟練度点軽減。肩代わり中も使用可だが他の通常軽減とは最高値一つ。",
+      "parameters": {
+        "reduce_base": 6,
+        "rank_add": true
+      },
+      "role": "主盾役の強い自己防護"
+    },
+    "l1": {
+      "id": "l1",
+      "name": "共鳴リンク",
+      "class": "link",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "セットアップ",
+      "check": "なし",
+      "target": "自身以外の味方1体",
+      "range": "0～2",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド（リンク系共有）",
+      "duration": "選択した次の判定1回、ラウンド終了まで",
+      "stacking_group": "attack_bonus_or_defense_bonus",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "付与時に攻撃判定+2又は防御判定+2を選択。防御は次に行う回避/防壁の先の1回だけ。自身不可、同意と射線必要。最大値一つ、同種予約は同じ判定で全消費。ラウンド末まで。",
+      "parameters": {
+        "attack_bonus": 2,
+        "modes": [
+          "attack",
+          "defense"
+        ]
+      },
+      "role": "味方の攻撃か防御を支援"
+    },
+    "l2": {
+      "id": "l2",
+      "name": "同期修復",
+      "class": "link",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "自身または味方1体",
+      "range": "0～2",
+      "cost": {
+        "EN": 6
+      },
+      "weapon_cost_additional": false,
+      "limit": "2/シーンかつ1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "l2",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "FPを2D6+キャラクターレベル回復。FP0・HP0には使用不可。EN/HPは回復しない。上限まで。",
+      "parameters": {
+        "healing_dice": 2,
+        "healing_level": true
+      },
+      "role": "動ける機体のFPを修復"
+    },
+    "l3": {
+      "id": "l3",
+      "name": "状態再較正",
+      "class": "link",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "自身または味方1体",
+      "range": "0～2",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "瞬間",
+      "stacking_group": "l3",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "本試遊で定義した移動/照準/防御/マイナーの妨害効果を一つ解除。公式BSへの適用は今回なし。",
+      "parameters": {
+        "clear_debuff": 1
+      },
+      "role": "独自の妨害を一つ解除"
+    },
+    "f1": {
+      "id": "f1",
+      "name": "牽制投射",
+      "class": "field",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "メジャー",
+      "check": "命中対回避",
+      "target": "敵1体",
+      "range": "位相投射器の射程",
+      "cost": {
+        "EN": 1
+      },
+      "weapon_cost_additional": true,
+      "limit": "1/ラウンド",
+      "duration": "対象の次のメイン終了まで",
+      "stacking_group": "accuracy_debuff",
+      "stacking": "妨害は技能名・分類に関わらず、同じ対象の同じ数値に対する減少量の最大値だけを適用。異なる数値は各々処理し、同じ属性防御も最大値のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "位相投射器で通常の射撃攻撃を1回行う。固定ダメージ-6（通常ダメージは最低0）。命中した対象の命中/砲撃を-2、BOSSは-1。武器代償を追加し、妨害の期限・重複・BOSSのクリンナップ解除は従来どおり。",
+      "parameters": {
+        "enemy_attack_debuff": 2,
+        "boss_debuff": 1,
+        "weapon": "phase",
+        "no_damage": false,
+        "debuff_channels": {
+          "normal": [
+            {
+              "stat": "命中",
+              "magnitude": 2
+            },
+            {
+              "stat": "砲撃",
+              "magnitude": 2
+            }
+          ],
+          "boss": [
+            {
+              "stat": "命中",
+              "magnitude": 1
+            },
+            {
+              "stat": "砲撃",
+              "magnitude": 1
+            }
+          ]
+        },
+        "damage": -6
+      },
+      "role": "射撃して敵の照準を妨害"
+    },
+    "f2": {
+      "id": "f2",
+      "name": "位相拘束",
+      "class": "field",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "メジャー",
+      "check": "命中対回避",
+      "target": "敵1体",
+      "range": "位相投射器の射程",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": true,
+      "limit": "1/ラウンド",
+      "duration": "対象の次のメイン終了まで",
+      "stacking_group": "move_debuff",
+      "stacking": "妨害は同じ対象・同じ数値（属性防御は同じ属性）の減少量の最大値だけを適用。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "位相投射器で通常の射撃攻撃を1回行う。固定ダメージ-6（通常ダメージは最低0）。命中した対象の移動力-1、最低0、BOSSは最低1。指揮停止・行動不能にはならない。武器代償を追加し、妨害の期限・重複・BOSSのクリンナップ解除は従来どおり。",
+      "parameters": {
+        "move_debuff": 1,
+        "boss_min_move": 1,
+        "weapon": "phase",
+        "no_damage": false,
+        "creates_restraint": true,
+        "debuff_channels": {
+          "normal": [
+            {
+              "stat": "移動",
+              "magnitude": 1
+            }
+          ],
+          "boss": [
+            {
+              "stat": "移動",
+              "magnitude": 1
+            }
+          ]
+        },
+        "damage": -6
+      },
+      "role": "射撃して敵の移動を妨害"
+    },
+    "f3": {
+      "id": "f3",
+      "name": "拘束線",
+      "class": "field",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次の牽制投射/位相拘束1回、メイン終了まで",
+      "stacking_group": "range_boost",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "その特技使用時だけ投射器の最大射程+1。通常攻撃の射程は変わらない。",
+      "parameters": {
+        "range_max": 1,
+        "skill_only": [
+          "f1",
+          "f2"
+        ]
+      },
+      "role": "牽制・拘束の射程を伸ばす"
+    },
+    "v1": {
+      "id": "v1",
+      "name": "軌道補助",
+      "class": "vector",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "ムーブ",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "このムーブまで",
+      "stacking_group": "v1",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "通常移動の移動力+1。全力/離脱と同時使用不可。砲撃の移動制限は残る。",
+      "parameters": {
+        "move_bonus": 1
+      },
+      "role": "通常移動を1増やす"
+    },
+    "v2": {
+      "id": "v2",
+      "name": "離脱推進",
+      "class": "vector",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "ムーブ",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "このメイン終了まで",
+      "stacking_group": "v2",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "敵同スクウェアから1マス離脱しても行動終了にならない。封鎖・拘束状態では不可。砲撃の移動制限は残る。 拘束は位相拘束等の本試遊の移動力低下が持続中の状態であり、本技能で解除・無視できない。",
+      "parameters": {
+        "leave_without_end": true,
+        "move": 1,
+        "forbidden_when_restraint": true,
+        "clears_restraint": false
+      },
+      "role": "接敵から離れて行動を続ける"
+    },
+    "v3": {
+      "id": "v3",
+      "name": "救出牽引",
+      "class": "vector",
+      "rank": 2,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "FP0の同意した味方機1体",
+      "range": "0",
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "切り離すまで",
+      "stacking_group": "v3",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "自機と同スクウェアで牽引を開始。移動力-1（最低1）、味方を同じ経路で運ぶ。牽引中は救出対象に独立移動なし。切り離しは自分のマイナー、範囲0。複数積載不可。",
+      "parameters": {
+        "tow": true,
+        "move_penalty": 1
+      },
+      "role": "FP0の味方機を牽引"
+    },
+    "core_repair": {
+      "id": "core_repair",
+      "name": "応急修復",
+      "class": "core",
+      "rank": 0,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 6
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/シーン",
+      "duration": "瞬間",
+      "stacking_group": "core_repair",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "FP1以上で使用し、FPを2D6+Lv回復。上限まで。EN/HPは回復しない。",
+      "parameters": {
+        "healing_dice": 2,
+        "healing_level": true
+      },
+      "role": "別枠の固定能力"
+    },
+    "core_restart": {
+      "id": "core_restart",
+      "name": "緊急再同期",
+      "class": "core",
+      "rank": 0,
+      "sub_allowed": false,
+      "timing": "FPが0になった直後",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "HP": 6
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション",
+      "duration": "瞬間",
+      "stacking_group": "core_restart",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "FP0直後、HP7以上、緊急再同期が未使用。",
+      "effect": "HP7以上ならHP6を支払いFPを意志ボーナス+Lvへ戻す。HP0では不可。復帰しても行動済みは戻らない。",
+      "parameters": {
+        "HP_cost": 6,
+        "revive": true,
+        "uses_target_restart": true
+      },
+      "role": "別枠の固定能力"
+    },
+    "core_rescue": {
+      "id": "core_rescue",
+      "name": "同乗救助",
+      "class": "core",
+      "rank": 0,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "FP0またはHP0の同意したPC操縦者1人",
+      "range": "0",
+      "cost": {
+        "EN": 0
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/メイン",
+      "duration": "同乗中",
+      "stacking_group": "core_rescue",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "使用者はHP/FP1以上。同スクウェアのFP0またはHP0のPC操縦者、当該プレイヤーの同意（HP0でもプレイヤーが選ぶ）、同乗席が空いている。",
+      "effect": "FP0またはHP0のPC操縦者だけを自機へ移す。同乗定員は2人で自機の操縦者とは別。対象の機体はFPが残っていても放棄し、機体の輸送・FP/HPの回復はしない。同乗者は独立手番なし。HP0は同乗後も操縦不能。機体ごとの輸送は救出牽引の別処理。",
+      "parameters": {
+        "passenger_capacity": 2,
+        "no_extra_action": true,
+        "target_condition": "FP==0 or HP==0",
+        "target_is_pc_pilot": true,
+        "abandon_target_mech_even_if_FP_remaining": true
+      },
+      "role": "別枠の固定能力"
+    },
+    "ub": {
+      "id": "ub",
+      "name": "刃の共鳴",
+      "class": "blade",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "自分の通常攻撃のダメージロール直前",
+      "check": "なし",
+      "target": "白兵攻撃の対象1体",
+      "range": "使用武器の射程",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "ub",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "通常白兵攻撃のダメージ+2D6。反撃には不可。物体可。",
+      "parameters": {
+        "damage_dice": 2
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "ug": {
+      "id": "ug",
+      "name": "砲の共鳴",
+      "class": "gunner",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "自分の通常攻撃のダメージロール直前",
+      "check": "なし",
+      "target": "射撃/砲撃攻撃の対象1体",
+      "range": "使用武器の射程",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "ug",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "通常射撃/砲撃のダメージ+2D6。移動後砲撃は許可しない。物体可。",
+      "parameters": {
+        "damage_dice": 2
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "us": {
+      "id": "us",
+      "name": "護りの共鳴",
+      "class": "bastion",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "自身または味方へのダメージ適用直前",
+      "check": "なし",
+      "target": "自身または味方1体",
+      "range": "0～1",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "us",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "肩代わりなしにダメージを12+2Lv軽減。通常軽減の最高値一つとだけ併用可。",
+      "parameters": {
+        "reduce_base": 12,
+        "reduce_level_times": 2
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "ul": {
+      "id": "ul",
+      "name": "再接続の共鳴",
+      "class": "link",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "メジャー",
+      "check": "なし",
+      "target": "自身または味方1体",
+      "range": "0～2",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "ul",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "FPを15+Lv回復。FP0ならHP1以上かつ緊急再同期未使用に限り、その回数を消費して復帰。HP/ENは回復しない。",
+      "parameters": {
+        "healing_base": 15,
+        "healing_level": true,
+        "revive": true,
+        "uses_target_restart": true
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "uf": {
+      "id": "uf",
+      "name": "干渉の共鳴",
+      "class": "field",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "セットアップ",
+      "check": "なし",
+      "target": "敵1体",
+      "range": "0～3",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "uf",
+      "stacking": "妨害は技能名・分類に関わらず、同じ対象の同じ数値に対する減少量の最大値だけを適用。異なる数値は各々処理し、同じ属性防御も最大値のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "命中/砲撃-3、防御属性一つ-2を対象の次のメイン終了まで付与。BOSSには各-1。判定不要。行動不能や指揮停止にはならない。",
+      "parameters": {
+        "enemy_attack_debuff": 3,
+        "armor_debuff": 2,
+        "boss_debuff": 1,
+        "debuff_channels": {
+          "normal": [
+            {
+              "stat": "命中",
+              "magnitude": 3
+            },
+            {
+              "stat": "砲撃",
+              "magnitude": 3
+            },
+            {
+              "stat": "属性防御:選択属性",
+              "magnitude": 2
+            }
+          ],
+          "boss": [
+            {
+              "stat": "命中",
+              "magnitude": 1
+            },
+            {
+              "stat": "砲撃",
+              "magnitude": 1
+            },
+            {
+              "stat": "属性防御:選択属性",
+              "magnitude": 1
+            }
+          ]
+        }
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "uv": {
+      "id": "uv",
+      "name": "軌道の共鳴",
+      "class": "vector",
+      "rank": 1,
+      "sub_allowed": false,
+      "timing": "ムーブ",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 4
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/セッション（共鳴解放共有）",
+      "duration": "瞬間または効果記載期限",
+      "stacking_group": "uv",
+      "stacking": "同一分類は最大効果一つ。再付与は更新のみ。",
+      "requires": [],
+      "conditions": "HP/FPが1以上、必要代償を支払えること。記載武装を装備。",
+      "effect": "通常移動の移動力+2、離脱しても行動終了なし。壁/閉鎖扉/封鎖/拘束は越えない。移動したメインの砲撃不可。 拘束は位相拘束等の本試遊の移動力低下が持続中の状態であり、本技能で解除・無視できない。",
+      "parameters": {
+        "move_bonus": 2,
+        "leave_without_end": true,
+        "forbidden_when_restraint": true,
+        "clears_restraint": false
+      },
+      "is_ultimate": true,
+      "role": "主クラスの共鳴解放"
+    },
+    "xb1": {
+      "id": "xb1",
+      "name": "崩しの起点",
+      "class": "blade",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": [
+        0,
+        0
+      ],
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "next_single_weapon_attack_this_main",
+      "stacking_group": "armor_ignore",
+      "stacking": "同種最大値一つ。同種予約は同じ判定/ダメージで全消費。",
+      "requires": [],
+      "conditions": "HP/FP1以上、代償、同意/射線/対象条件はfull_rule_ja参照。",
+      "effect": "### B1 崩しの起点（ブレード：新規）\n\n- 取得：熟練度1／主・副可／前提なし\n- タイミング：マイナー／判定なし／自身、射程0\n- 代償：EN2。次の武器攻撃の武器ENは別払い\n- 回数：1ラウンド1回\n- 持続：このメイン中の次の単体武器攻撃1回。攻撃判定前に消費\n- 効果：攻撃の対象である敵と、使用者自身またはHP/FP1以上の味方機が同スクウェアにいる場合、その攻撃の属性防御を2点無視する。攻撃対象確定時に位置を確認する。味方の同意が必要。白兵・射撃・砲撃可。物体不可、複数対象攻撃・反撃不可\n- 重複：装甲無視の最大値一つ。固定ダメージ増加とは別分類\n- 狙い：前衛の崩しを後衛が拾う。副ブレードのガンナーも主砲を捨てず参加できる\n- 例：ガンナー／ブレードが、味方ブレードと接敵中の敵へ通常ランサー攻撃。EN2+4=6、光防御を2無視。出力投射をメジャーに使うなら総EN8で固定+3も付く\n- 失敗例：味方前衛が離れた、敵が物体、防御が既に0なら利益なし。位相断ちの無視3に重ねても無視5にはならない。マイナーを使うため砲撃姿勢・収束照準と同時不可\n",
+      "parameters": {
+        "ignore_armor": 2,
+        "requires_frontliner": true,
+        "single_only": true,
+        "no_object": true,
+        "no_reaction": true
+      },
+      "role": "前衛と連携して装甲を無視"
+    },
+    "xg1": {
+      "id": "xg1",
+      "name": "援護標定",
+      "class": "gunner",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "セットアップ",
+      "check": "なし",
+      "target": "敵1体",
+      "range": [
+        0,
+        3
+      ],
+      "cost": {
+        "EN": 2
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "next_other_ally_single_weapon_attack_until_round_end",
+      "stacking_group": "damage_boost",
+      "stacking": "同種最大値一つ。同種予約は同じ判定/ダメージで全消費。",
+      "requires": [],
+      "conditions": "HP/FP1以上、代償、同意/射線/対象条件はfull_rule_ja参照。",
+      "effect": "### G1 援護標定（ガンナー：新規）\n\n- 取得：熟練度1／主・副可／前提なし\n- タイミング：セットアップ／判定なし／敵1体、0～3、射線必要\n- 代償：EN2。標定自体は攻撃でなく武器EN不要。後の攻撃者は通常どおり武器ENを払う\n- 回数：1ラウンド1回\n- 持続：使用者以外の味方が対象へ行う次の単体武器攻撃1回、ラウンド終了まで。命中の成否を問わず攻撃判定前に消費\n- 効果：その攻撃の固定ダメージ+2。反撃・複数対象攻撃・物体不可。攻撃者自身の技能／武器条件は変えない\n- 重複：damage_boost。出力投射+3・踏込斬り+3等とは最大値一つ。その攻撃へ一つでも標定が適用されるなら、その敵に付いた全使用者の標定を同時に消費する。使用者自身しか標定していない場合、その使用者自身の攻撃では消費しない。例：AとBが同じ敵を標定した後Aが攻撃すると、Bの標定で+2を得てA/B両方の標定が消える。他の味方の対象への最初の単体攻撃で自動消費し、都合のよい後続へ温存できない\n- 狙い：副ガンナーで近接や支援を続けながら、味方の通常攻撃を助ける\n- 例：リンク／ガンナーが標定を選ぶ。今ラウンドは共鳴リンクを使わずEN2で標定し、メジャーは同期修復EN6。味方の通常攻撃に+2、総EN8。攻撃判定補助を持つ仲間なら攻撃補助と両立する\n- 失敗例：自分しか攻撃しない、最初の仲間が既に固定+3を使う、対象が途中で倒れる場合は浪費。セットアップ枠を使うので同一使用者の共鳴リンク／干渉の共鳴と同時不可\n",
+      "parameters": {
+        "damage": 2,
+        "other_attacker_only": true,
+        "consume_all_marks_when_any_eligible": true,
+        "single_only": true,
+        "no_object": true,
+        "no_reaction": true
+      },
+      "role": "仲間の次の一撃に火力を渡す"
+    },
+    "xs1": {
+      "id": "xs1",
+      "name": "護衛予約",
+      "class": "bastion",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "他の味方1体",
+      "range": [
+        0,
+        1
+      ],
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "next_damage_to_target_until_round_end",
+      "stacking_group": "reduction",
+      "stacking": "同種最大値一つ。同種予約は同じ判定/ダメージで全消費。",
+      "requires": [],
+      "conditions": "HP/FP1以上、代償、同意/射線/対象条件はfull_rule_ja参照。",
+      "effect": "### S1 護衛予約（バスティオン：新規）\n\n- 取得：熟練度1／主・副可／前提なし\n- タイミング：マイナー／判定なし／自身以外の同意した味方1体、0～1、射線必要\n- 代償：EN3／武器EN不要\n- 回数：1ラウンド1回\n- 持続：対象の次の被ダメージ1回、ラウンド終了まで\n- 効果：対象へ通常軽減4を予約する。対象は移動しても保持する。肩代わりはしない。適用時に使用者との距離を再確認しない。対象の装甲適用後、最低0。対象が別の者へ肩代わりさせた場合は対象への被ダメージでないため予約を消費しない\n- 重複：reduction。迎撃装甲・装甲集中・刃受け・庇護展開の軽減部分と加算しない。0ダメージでも対象へ適用するダメージ処理1回で消費\n- 狙い：盾役がいない編成でも、一緒にいた仲間へ防御を渡して別れる。副バスティオンの機動機に有効\n- 例：ヴェクター／バスティオンがムーブで味方の隣へ寄り、マイナーEN3で護衛予約、メジャーは投射器EN2。総EN5。次ラウンドの防御は残らない\n- 失敗例：全力移動で行動終了したあとには使えない。高軽減を持つ味方へ重ねても4を加算できない。自分は守れない。離れた仲間へのその場の庇護の代用ではない\n",
+      "parameters": {
+        "reduction_reserve": 4,
+        "other_ally_only": true,
+        "consume_on_zero_damage": true,
+        "persists_after_movement": true,
+        "no_consume_if_redirected": true
+      },
+      "role": "仲間へ軽減を予約"
+    },
+    "xf1": {
+      "id": "xf1",
+      "name": "牽制信号",
+      "class": "field",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "セットアップ",
+      "check": "なし",
+      "target": "敵1体",
+      "range": [
+        0,
+        3
+      ],
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "next_weapon_attack_check_until_round_end",
+      "stacking_group": "accuracy_debuff",
+      "stacking": "同種最大値一つ。同種予約は同じ判定/ダメージで全消費。",
+      "requires": [],
+      "conditions": "HP/FP1以上、代償、同意/射線/対象条件はfull_rule_ja参照。",
+      "effect": "### F1 牽制信号（フィールド：新規）\n\n- 取得：熟練度1／主・副可／前提なし\n- タイミング：セットアップ／判定なし／敵1体、0～3、射線必要\n- 代償：EN3／武器EN不要。投射器その他の特定武器を要求しない\n- 回数：1ラウンド1回\n- 持続：対象の次の武器攻撃判定1回、ラウンド終了まで。命中／砲撃判定の直前に消費\n- 効果：その攻撃判定−1。BOSSも−1。攻撃回数・メイン・指揮・切り札は奪わない。ダメージなし。複数対象を一つの攻撃判定で処理する攻撃ならその1判定だけに適用。物体不可\n- 重複：既存妨害と同じ数値の最大低下だけ。牽制投射−2／BOSS−1と加算不可。別の強い妨害を使っていてもこの次回予約はその判定で消費する。通常の妨害解除対象\n- 狙い：主ガンナーは主砲、主リンクは修復を続けながら、副フィールドで一撃だけ妨害する。牽制投射の判定付き攻撃・継続−2とは使い分け\n- 例：ガンナー／フィールドが信号EN3、マイナー収束照準EN2、メジャー通常ランサーEN4。総EN9。同じ敵へ信号と標準ランサーを使うには距離3が必要（両射程の共通範囲）。距離4～5の砲撃対象とは別の近い敵を信号で妨害することもできる。一方、既存の副牽制投射は総EN3だが主砲のメジャーを使えない\n- 失敗例：対象が今ラウンド攻撃しない、既に牽制投射が付く、対象の敵が攻撃せずメジャーを装置操作に使う場合は浪費。共鳴リンク等の自分のセットアップとは競合\n",
+      "parameters": {
+        "next_attack_debuff": 1,
+        "boss_debuff": 1,
+        "requires_weapon": false,
+        "consume_even_if_stronger_debuff": true
+      },
+      "role": "敵の次の攻撃だけを妨害"
+    },
+    "xv1": {
+      "id": "xv1",
+      "name": "転進機動",
+      "class": "vector",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "マイナー",
+      "check": "なし",
+      "target": "自身",
+      "range": [
+        0,
+        0
+      ],
+      "cost": {
+        "EN": 3
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンドかつ2/シーン",
+      "duration": "after_next_single_melee_or_shooting_attack_this_main",
+      "stacking_group": "extra_move",
+      "stacking": "同種最大値一つ。同種予約は同じ判定/ダメージで全消費。",
+      "requires": [],
+      "conditions": "HP/FP1以上、代償、同意/射線/対象条件はfull_rule_ja参照。",
+      "effect": "### V1 転進機動（ヴェクター：新規）\n\n- 取得：熟練度1／主・副可／前提なし\n- タイミング：マイナー／判定なし／自身、射程0\n- 代償：EN3。後の攻撃の武器・メジャー技能ENは別払い\n- 回数：1ラウンド1回、かつ1シーン2回\n- 持続：このメイン中の次の単体白兵／射撃攻撃1回を解決し終わるまで\n- 効果：その攻撃終了直後、命中の成否にかかわらず任意で1マス移動する。敵同スクウェアからの離脱も可。壁・閉鎖ゲート・盤外不可。使用時および移動時に封鎖／拘束中なら不可。敵のいる移動先へ入るとそこで停止。新たな手番・攻撃は得ない\n- 制限：砲撃・複数対象攻撃・反撃には使えない。攻撃で起きた全てのダメージ・復帰等を解決した後、HP/FP1以上なら移動できる。通常移動とは別の追加移動で、踏込斬りの事前通常移動条件を後から満たさない。このメイン終了後の反撃等へ予約を持ち越さない\n- 重複：同攻撃後にこの追加移動は一回だけ。射程拡張／照準と同じマイナー枠を争う\n- 狙い：近接へ入り一撃後に一歩戻る／射撃後に護衛や出口へ寄る。何度でも移動技能を無料使用する仕組みではない\n- 例：ブレード／ヴェクターが通常移動で接敵、転進EN3、踏込斬りEN2+剣EN3、攻撃後1マス退く。総EN8、固定+3、シーン2回まで\n- 失敗例：敵の移動力が十分あれば1マス退いても追いつかれる。射程0の敵を永久封殺する保証はない。拘束は解除しない。ランサーで撃ってから逃げる使い方は不可\n",
+      "parameters": {
+        "post_attack_move": 1,
+        "kinds": [
+          "白兵",
+          "射撃"
+        ],
+        "forbidden_when_restraint": true,
+        "forbidden_when_sealed": true,
+        "single_only": true,
+        "no_reaction": true,
+        "requires_active_after_resolution": true
+      },
+      "role": "白兵・射撃の後に1マス移動"
+    },
+    "xs2": {
+      "id": "xs2",
+      "name": "防護からの標定",
+      "class": "bastion",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "条件を満たす解決後",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 0
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次に到来する自身のメイン終了まで",
+      "stacking_group": "attack_bonus",
+      "stacking": "最大値一つ",
+      "requires": [],
+      "conditions": "自分が使用した防御技能が敵の攻撃による被害を実際に1点以上軽減、または1点以上の被害を実際に肩代わりした解決後。自分が付与した予約防御の実効適用も可。装甲のみ、0実効軽減、他人の技能で自分を守られた場合、支援防御判定の付与のみは不可。最大値に負けた軽減は発動しない。肩代わり後に全被害0なら肩代わり条件は不成立だが自分の技能が実際に軽減したなら可。",
+      "effect": "敵による通常攻撃由来のみ。反撃・追撃・味方攻撃・自傷・物体由来は不可。自身がHP/FP1以上のとき1ラウンド1回だけ予約。次に到来する自身のメイン終了まで（ラウンドを跨いでも可）。次の自身のメイン内単体武器攻撃（白兵・射撃・砲撃、敵または物体）の判定直前に+2を適用し、外れても消費。反撃・複数対象には適用せず消費もしない。複数回発動、二技能併用でも予約1個、期限更新なし。既に予約中なら発動回数を使わず新規予約しない。失効後はそのラウンド未発動なら発動可。通常attack_bonus最大値一つ、リンク・照準・高命中武器と非加算、他の予約も従来どおり同時消費。追加攻撃・追加手番なし。戦闘不能・シーン終了で消滅。",
+      "parameters": {
+        "attack_bonus": 2,
+        "reservation_capacity": 1,
+        "no_chain": true
+      },
+      "role": "実効防護後に自分の照準を予約"
+    },
+    "xv2": {
+      "id": "xv2",
+      "name": "回避からの標定",
+      "class": "vector",
+      "rank": 1,
+      "sub_allowed": true,
+      "timing": "条件を満たす解決後",
+      "check": "なし",
+      "target": "自身",
+      "range": "0",
+      "cost": {
+        "EN": 0
+      },
+      "weapon_cost_additional": false,
+      "limit": "1/ラウンド",
+      "duration": "次に到来する自身のメイン終了まで",
+      "stacking_group": "attack_bonus",
+      "stacking": "最大値一つ",
+      "requires": [],
+      "conditions": "自分が敵の通常攻撃に対する回避判定に最終的に成功した解決後。防壁は含まない。他人の判定支援を受けて成功しても自分の回避なので可。ヘイムダル等で命中へ変更された場合は不可。",
+      "effect": "敵による通常攻撃由来のみ。反撃・追撃・味方攻撃・自傷・物体由来は不可。自身がHP/FP1以上のとき1ラウンド1回だけ予約。次に到来する自身のメイン終了まで（ラウンドを跨いでも可）。次の自身のメイン内単体武器攻撃（白兵・射撃・砲撃、敵または物体）の判定直前に+2を適用し、外れても消費。反撃・複数対象には適用せず消費もしない。複数回発動、二技能併用でも予約1個、期限更新なし。既に予約中なら発動回数を使わず新規予約しない。失効後はそのラウンド未発動なら発動可。通常attack_bonus最大値一つ、リンク・照準・高命中武器と非加算、他の予約も従来どおり同時消費。追加攻撃・追加手番なし。戦闘不能・シーン終了で消滅。",
+      "parameters": {
+        "attack_bonus": 2,
+        "reservation_capacity": 1,
+        "no_chain": true
+      },
+      "role": "回避成功後に自分の照準を予約"
+    }
+  },
+  "weapons": {
+    "unarmed": {
+      "name": "機拳（共通素手行動）",
+      "kind": "白兵",
+      "check": "命中",
+      "defense": "回避",
+      "attribute": "殴",
+      "range": [
+        0,
+        0
+      ],
+      "power": 2,
+      "EN": 0,
+      "slot": "装備枠外の低威力素手行動",
+      "modifiers": {}
+    },
+    "frame": {
+      "name": "同調フレーム",
+      "kind": "白兵",
+      "check": "命中",
+      "defense": "回避",
+      "attribute": "殴",
+      "range": [
+        0,
+        0
+      ],
+      "power": 5,
+      "EN": 0,
+      "slot": "主",
+      "modifiers": {}
+    },
+    "phase": {
+      "name": "位相投射器",
+      "kind": "射撃",
+      "check": "命中",
+      "defense": "回避",
+      "attribute": "光",
+      "range": [
+        1,
+        3
+      ],
+      "power": 6,
+      "EN": 2,
+      "slot": "副",
+      "modifiers": {},
+      "tags": [
+        "interference_projector"
+      ]
+    },
+    "blade": {
+      "name": "共鳴ブレード",
+      "kind": "白兵",
+      "check": "命中",
+      "defense": "回避",
+      "attribute": "斬",
+      "range": [
+        0,
+        0
+      ],
+      "power": 8,
+      "EN": 3,
+      "slot": "主",
+      "modifiers": {
+        "命中": 1,
+        "回避": -1,
+        "行動": -1
+      },
+      "tags": [
+        "phase_blade"
+      ]
+    },
+    "lancer": {
+      "name": "共鳴ランサー",
+      "kind": "砲撃",
+      "check": "砲撃",
+      "defense": "防壁",
+      "attribute": "光",
+      "range": [
+        3,
+        5
+      ],
+      "power": 9,
+      "EN": 4,
+      "slot": "主",
+      "modifiers": {
+        "砲撃": 1,
+        "回避": -1,
+        "行動": -1
+      },
+      "tags": [
+        "focus_cannon"
+      ]
+    },
+    "long_blade": {
+      "name": "長柄共鳴刃",
+      "slot": "主",
+      "allowed_main": [
+        "blade"
+      ],
+      "kind": "白兵",
+      "check": "命中",
+      "defense": "回避",
+      "range": [
+        0,
+        1
+      ],
+      "power": 7,
+      "modifiers": {
+        "命中": 1,
+        "回避": -1,
+        "行動": -2
+      },
+      "tags": [
+        "phase_blade"
+      ],
+      "attribute": "斬",
+      "EN": 4,
+      "replaces": "blade",
+      "official_playtest_choice": true
+    },
+    "mid_cannon": {
+      "name": "中距離共鳴砲",
+      "slot": "主",
+      "allowed_main": [
+        "gunner"
+      ],
+      "kind": "砲撃",
+      "check": "砲撃",
+      "defense": "防壁",
+      "range": [
+        2,
+        4
+      ],
+      "power": 8,
+      "modifiers": {
+        "砲撃": 1,
+        "回避": -1,
+        "行動": -1
+      },
+      "tags": [
+        "focus_cannon"
+      ],
+      "attribute": "光",
+      "EN": 4,
+      "replaces": "lancer",
+      "official_playtest_choice": true
+    },
+    "economy_phase": {
+      "name": "省出力位相投射器",
+      "slot": "副",
+      "allowed_main": [
+        "blade",
+        "gunner",
+        "bastion",
+        "link",
+        "field",
+        "vector"
+      ],
+      "kind": "射撃",
+      "check": "命中",
+      "defense": "回避",
+      "range": [
+        1,
+        2
+      ],
+      "power": 4,
+      "modifiers": {},
+      "tags": [
+        "interference_projector"
+      ],
+      "attribute": "光",
+      "EN": 1,
+      "replaces": "phase",
+      "official_playtest_choice": true
+    },
+    "control_frame": {
+      "name": "制御打撃フレーム",
+      "slot": "主",
+      "kind": "白兵",
+      "attribute": "殴",
+      "range": [
+        0,
+        0
+      ],
+      "power": 2,
+      "EN": 0,
+      "check": "命中",
+      "defense": "回避",
+      "modifiers": {},
+      "tags": [],
+      "allowed_main": [
+        "bastion",
+        "link",
+        "field",
+        "vector"
+      ],
+      "replaces": "frame",
+      "attack_bonus": 2,
+      "stacking_group": "attack_bonus",
+      "bonus_scope": "this_weapon_check_only",
+      "official_playtest_choice": true
+    },
+    "control_projector": {
+      "name": "制御投射器",
+      "slot": "副",
+      "kind": "射撃",
+      "attribute": "光",
+      "range": [
+        1,
+        3
+      ],
+      "power": 3,
+      "EN": 2,
+      "check": "命中",
+      "defense": "回避",
+      "modifiers": {},
+      "tags": [],
+      "allowed_main": [
+        "bastion",
+        "link",
+        "field",
+        "vector"
+      ],
+      "replaces": "phase",
+      "attack_bonus": 2,
+      "stacking_group": "attack_bonus",
+      "bonus_scope": "this_weapon_check_only",
+      "official_playtest_choice": true
+    }
+  },
+  "options": {
+    "shield": {
+      "name": "共鳴シールド",
+      "modifiers": {
+        "防壁": 1
+      },
+      "armor": {
+        "斬": 1,
+        "刺": 1,
+        "殴": 1
+      }
+    },
+    "relay": {
+      "name": "共鳴リレーユニット",
+      "modifiers": {},
+      "armor": {}
+    },
+    "anchor": {
+      "name": "位相拘束アンカーユニット",
+      "modifiers": {},
+      "armor": {}
+    },
+    "fins": {
+      "name": "軌道フィン",
+      "modifiers": {},
+      "armor": {}
+    }
+  },
+  "tagCompatibility": {
+    "phase_blade": {
+      "weapons": [
+        "blade",
+        "long_blade"
+      ],
+      "skills": [
+        "b3",
+        "b7"
+      ],
+      "named": "blade"
+    },
+    "focus_cannon": {
+      "weapons": [
+        "lancer",
+        "mid_cannon"
+      ],
+      "skills": [
+        "g3",
+        "g6",
+        "g7"
+      ],
+      "named": "lancer"
+    },
+    "interference_projector": {
+      "weapons": [
+        "phase",
+        "economy_phase"
+      ],
+      "skills": [
+        "f1",
+        "f2",
+        "f5",
+        "f6",
+        "f7",
+        "g4"
+      ],
+      "named": "phase"
+    }
+  },
+  "presets": {
+    "blade/gunner": {
+      "mainSkills": [
+        "b1",
+        "b3"
+      ],
+      "subSkills": [
+        "xg1"
+      ],
+      "weapons": [
+        "blade",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 新・援護標定。セットアップ標定2→通常移動→踏込斬り2+剣3。計7。仲間の次の通常単体攻撃+2",
+      "caution": "注意：自分の剣には標定無効。仲間の固定+3とも重ならない"
+    },
+    "blade/bastion": {
+      "mainSkills": [
+        "b1",
+        "b3"
+      ],
+      "subSkills": [
+        "s1"
+      ],
+      "weapons": [
+        "blade",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 既存・庇護展開。通常移動→踏込斬り5、近くの味方が被弾したら庇護3。計8",
+      "caution": "注意：味方0～1、自分も範囲対象なら不可。引受けで自身のFPが減る"
+    },
+    "blade/link": {
+      "mainSkills": [
+        "b1",
+        "b3"
+      ],
+      "subSkills": [
+        "l1"
+      ],
+      "weapons": [
+        "blade",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 改訂・共鳴リンク。他の味方へリンク2→通常移動→踏込斬り5。計7",
+      "caution": "注意：自己強化にはならない。攻撃補助のある仲間には新防御モードが候補"
+    },
+    "blade/field": {
+      "mainSkills": [
+        "b1",
+        "b3"
+      ],
+      "subSkills": [
+        "xf1"
+      ],
+      "weapons": [
+        "blade",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 新・牽制信号。信号3→通常移動→踏込斬り5。計8。主の斬撃を保ち敵の次の攻撃−1",
+      "caution": "注意：他の牽制投射と重ならない。既存副牽制を選ぶなら剣と別の手番の遠隔妨害になる"
+    },
+    "blade/vector": {
+      "mainSkills": [
+        "b1",
+        "b3"
+      ],
+      "subSkills": [
+        "xv1"
+      ],
+      "weapons": [
+        "blade",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 新・転進機動。通常移動で接敵→転進3→踏込斬り5→1マス退く。計8",
+      "caution": "注意：シーン2回、拘束・封鎖不可。既存副離脱推進を選ぶなら脱出して別対象へ剣攻撃する案"
+    },
+    "gunner/blade": {
+      "mainSkills": [
+        "g1",
+        "g2"
+      ],
+      "subSkills": [
+        "xb1"
+      ],
+      "weapons": [
+        "lancer",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 新・崩しの起点。味方と接敵中の敵へ崩し2→出力投射2+砲4。計8、固定+3、装甲無視2",
+      "caution": "注意：マイナーが照準と競合。味方が接敵していないと使えない。主砲を捨てない"
+    },
+    "gunner/bastion": {
+      "mainSkills": [
+        "g1",
+        "g2"
+      ],
+      "subSkills": [
+        "s1"
+      ],
+      "weapons": [
+        "lancer",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 既存・庇護展開。移動せず通常砲4、隣の後衛が被弾したら庇護3。計7",
+      "caution": "注意：前衛まで庇護の射程は届かない。庇うだけでは移動にならず砲撃制限に触れない"
+    },
+    "gunner/link": {
+      "mainSkills": [
+        "g1",
+        "g2"
+      ],
+      "subSkills": [
+        "l1"
+      ],
+      "weapons": [
+        "lancer",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 改訂・共鳴リンク。味方へリンク2、自分は収束照準2→通常砲4。計8",
+      "caution": "注意：別人を強化するので重複しない。自分へリンクは不可"
+    },
+    "gunner/field": {
+      "mainSkills": [
+        "g1",
+        "g2"
+      ],
+      "subSkills": [
+        "xf1"
+      ],
+      "weapons": [
+        "lancer",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 新・牽制信号。信号3→収束照準2→通常砲4。計9",
+      "caution": "注意：同じ敵へ両方使うなら距離3に限る。別々の敵も可。ENが重い。副牽制投射との両取り不可"
+    },
+    "gunner/vector": {
+      "mainSkills": [
+        "g1",
+        "g2"
+      ],
+      "subSkills": [
+        "v2"
+      ],
+      "weapons": [
+        "lancer",
+        "phase"
+      ],
+      "category": "直接・補完",
+      "example": "副技能 既存・離脱推進。接敵から離脱3→収束照準2→通常投射器2。計7",
+      "caution": "注意：移動したので主砲は撃てない。次ラウンドの砲撃位置を作る段取りであり砲撃の強化ではない"
+    },
+    "bastion/blade": {
+      "mainSkills": [
+        "s1",
+        "xs2"
+      ],
+      "subSkills": [
+        "b1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 踏込斬り。庇護3で実効防護→次メインで通常移動→踏込2＋同調0。計5、攻撃判定+2。",
+      "caution": "注意：庇護前の攻撃に標定は付かない。移動なしなら踏込不可。迎撃装甲は未取得。"
+    },
+    "bastion/gunner": {
+      "mainSkills": [
+        "s1",
+        "xs2"
+      ],
+      "subSkills": [
+        "g1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・補完",
+      "example": "副技能 収束照準。庇護後に標定があれば通常投射器2。庇護3を含め計5。標定なしなら照準2＋投射器2。",
+      "caution": "注意：標定+2がある攻撃に照準を重ねても+4にならない。副から主砲は得ない。"
+    },
+    "bastion/link": {
+      "mainSkills": [
+        "s1",
+        "xs2"
+      ],
+      "subSkills": [
+        "l1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 共鳴リンク。味方へ防御リンク2→失敗した被害を庇護3→次メインで標定付き投射器2。計7。",
+      "caution": "注意：味方の回避成功だけでは自分の防護標定は発動しない。実効防護が必要。"
+    },
+    "bastion/field": {
+      "mainSkills": [
+        "s1",
+        "xs2"
+      ],
+      "subSkills": [
+        "f1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 牽制投射。庇護3の実効防護→次メインで標定付き牽制1＋投射器2。計6。",
+      "caution": "注意：制御投射器では牽制不可。標準投射器なら命中補助+2と固定−6の妨害を両立。"
+    },
+    "bastion/vector": {
+      "mainSkills": [
+        "s1",
+        "xs2"
+      ],
+      "subSkills": [
+        "v1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 軌道補助。軌道補助2で移動3→投射器2、護衛位置で庇護3。計7。実効防護後は次メインへ標定。",
+      "caution": "注意：標定は攻撃に遡及しない。敵同マスから軌道補助だけで離脱できない。"
+    },
+    "link/blade": {
+      "mainSkills": [
+        "l1",
+        "l2"
+      ],
+      "subSkills": [
+        "b1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "補完",
+      "example": "副技能 踏込斬り。味方へリンク2→通常移動→踏込2＋同調0。計4。修復不要の手番に近接攻撃。",
+      "caution": "注意：修復と踏込は同じメジャーで併用不可。遠隔なら投射器を選ぶ。条件標定は未取得。"
+    },
+    "link/gunner": {
+      "mainSkills": [
+        "l1",
+        "l2"
+      ],
+      "subSkills": [
+        "g1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "補完",
+      "example": "副技能 収束照準。味方へリンク2→自分は収束照準2＋通常投射器2。計6。",
+      "caution": "注意：同期修復は別手番。自分へ共鳴リンクは不可。制御投射器なら照準+2は重ならない。"
+    },
+    "link/bastion": {
+      "mainSkills": [
+        "l1",
+        "l2"
+      ],
+      "subSkills": [
+        "s1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 庇護展開。味方へリンク2→自分へ同期修復6→近くの味方を庇護3。計11。",
+      "caution": "注意：防護からの標定は未取得。Lv3副1枠で庇護と標定を両取り不可。FP0に通常修復不可。"
+    },
+    "link/field": {
+      "mainSkills": [
+        "l1",
+        "l2"
+      ],
+      "subSkills": [
+        "f1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "補完",
+      "example": "副技能 牽制投射。味方へリンク2→牽制1＋標準投射器2。計5。修復と妨害は手番ごとに選ぶ。",
+      "caution": "注意：制御投射器に妨害は継承しない。牽制信号はこの副1枠には取得していない。"
+    },
+    "link/vector": {
+      "mainSkills": [
+        "l1",
+        "l2"
+      ],
+      "subSkills": [
+        "xv2"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・補完",
+      "example": "副技能 回避からの標定。敵の通常攻撃を回避→次メインで標準投射器2、攻撃判定+2。味方リンク2も使えば計4。",
+      "caution": "注意：標定は追加EN0。同期修復したメインの終了時には未使用でも失効。軌道補助は未取得。"
+    },
+    "field/blade": {
+      "mainSkills": [
+        "f1",
+        "f2"
+      ],
+      "subSkills": [
+        "b1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "補完",
+      "example": "副技能 踏込斬り。通常移動で接敵→踏込2＋同調0。計2。妨害射撃と別手番の近接選択。",
+      "caution": "注意：固定+3は殴属性。位相断ちや崩しの起点は未取得。近接を選ばず投射器妨害も可。"
+    },
+    "field/gunner": {
+      "mainSkills": [
+        "f1",
+        "f2"
+      ],
+      "subSkills": [
+        "g1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 収束照準。収束照準2→位相拘束2＋標準投射器2。計6。",
+      "caution": "注意：射撃判定+2。攻撃リンク+2があれば照準分を節約できる。制御投射器では拘束不可。"
+    },
+    "field/bastion": {
+      "mainSkills": [
+        "f1",
+        "f2"
+      ],
+      "subSkills": [
+        "s1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 庇護展開。牽制1＋標準投射器2→味方の被害を庇護3。計6。",
+      "caution": "注意：主バスティオンの装甲や防護標定は得ない。副1枠なので庇護のみ。残FPを確認。"
+    },
+    "field/link": {
+      "mainSkills": [
+        "f1",
+        "f2"
+      ],
+      "subSkills": [
+        "l1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "協働",
+      "example": "副技能 共鳴リンク。味方へ攻撃／防御リンク2→牽制1＋標準投射器2。計5。",
+      "caution": "注意：自分へリンク不可。敵を弱め、味方も支える。主リンク／副フィールドとは主力が逆。"
+    },
+    "field/vector": {
+      "mainSkills": [
+        "f1",
+        "f2"
+      ],
+      "subSkills": [
+        "xv2"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 回避からの標定。敵の通常攻撃を回避→次メインで位相拘束2＋標準投射器2。計4、射撃判定+2。",
+      "caution": "注意：離脱推進は未取得。敵同マスなら通常離脱で行動終了。標定があっても射程条件は必要。"
+    },
+    "vector/blade": {
+      "mainSkills": [
+        "v1",
+        "xv2"
+      ],
+      "subSkills": [
+        "b1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 踏込斬り。回避後の予約→軌道補助2で通常移動4→踏込2＋同調0。計4、攻撃判定+2。",
+      "caution": "注意：標定なしなら命中補助なし。離脱推進は未取得。踏込には事前の通常移動が必要。"
+    },
+    "vector/gunner": {
+      "mainSkills": [
+        "v1",
+        "xv2"
+      ],
+      "subSkills": [
+        "g1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・補完",
+      "example": "副技能 収束照準。回避後の標定→軌道補助2で移動4→投射器2。計4。標定なしなら照準2で計6。",
+      "caution": "注意：標定と照準を足さない。出力投射は未取得。射撃なので通常移動後に使用可。"
+    },
+    "vector/bastion": {
+      "mainSkills": [
+        "v1",
+        "xv2"
+      ],
+      "subSkills": [
+        "s1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 庇護展開。軌道補助2で移動4→通常投射器2→近くの味方を庇護3。計7。",
+      "caution": "注意：回避標定は自分の回避成功でのみ発動。庇護は防護標定を自動付与しない。護衛予約は未取得。"
+    },
+    "vector/link": {
+      "mainSkills": [
+        "v1",
+        "xv2"
+      ],
+      "subSkills": [
+        "l1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接・協働",
+      "example": "副技能 共鳴リンク。味方へリンク2→軌道補助2で移動4→標定があれば投射器2に+2。計6。",
+      "caution": "注意：リンクは移動前の位置で射程判定。自分へ不可。副同期修復は未取得。"
+    },
+    "vector/field": {
+      "mainSkills": [
+        "v1",
+        "xv2"
+      ],
+      "subSkills": [
+        "f1"
+      ],
+      "weapons": [
+        "frame",
+        "phase"
+      ],
+      "category": "直接",
+      "example": "副技能 牽制投射。回避後の標定→軌道補助2で移動4→牽制1＋標準投射器2。計5、射撃判定+2。",
+      "caution": "注意：位相拘束・離脱推進は未取得。敵同マスから通常移動不可。制御投射器へ牽制を移せない。"
+    }
+  }
+}
